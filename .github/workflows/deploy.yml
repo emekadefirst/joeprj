@@ -16,9 +16,3 @@ jobs:
       - name: Install lftp
         run: sudo apt-get install lftp -y
 
-      - name: Simulate Deploy via FTP (Test)
-        run: |
-          echo "Simulating FTP upload process"
-          echo "Listing the files to be uploaded"
-          ls -l ./public_html  # Simulate listing files that would be uploaded
-          echo "FTP Deployment would happen here (simulated)"
