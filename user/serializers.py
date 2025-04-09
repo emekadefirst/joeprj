@@ -11,7 +11,6 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "role",
             "username",
-            "phone_number",
             "password",
             "created_at",
         ]
@@ -23,7 +22,6 @@ class SignUpSerializer(serializers.ModelSerializer):
             "id",
             "email",
             "username",
-            "phone_number",
             "password",
             "role",
             "created_at",
