@@ -24,6 +24,12 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 
+from rest_framework.routers import DefaultRouter
+from audit.views import AuditLogViewSet
+
+router = DefaultRouter()
+router.register(r'audit-logs', AuditLogViewSet)
+
 
 urlpatterns = [
     re_path(
@@ -35,6 +41,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('user.urls')),
     path('api/', include('api.urls')),
+    path('audit-log/', include(router.urls)),
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/token/verify/", TokenVerifyView.as_view(), name="token_verify"),

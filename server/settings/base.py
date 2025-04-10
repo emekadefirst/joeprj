@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     # apps
     'user',
     'api',
-
+    'audit',
 ]
 
 AUTHENTICATION_BACKENDS = [

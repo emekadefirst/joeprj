@@ -10,4 +10,7 @@ urlpatterns = [
     # Daily Study
     path('daily-study', views.DailyStudyView.as_view(), name="daily-study-list-create"),
     path('daily-study/<int:pk>', views.DailyStudyRetrieveUpdateDestroyView.as_view(), name="daily-study-retrieve-update-delete"),
+
+    # notifications
+    path('api/register-device/', views.register_device),
 ]
