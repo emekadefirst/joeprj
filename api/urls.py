@@ -13,4 +13,5 @@ urlpatterns = [
 
     # notifications
     path('api/register-device/', views.register_device),
+    path('test-notification/', views.test_notification, name="Test notifcation")
 ]
