@@ -3,7 +3,7 @@ from .base import *
 from datetime import timedelta
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 SECRET_KEY = 'django-insecure-^h%1ius-)i(8jgpj4hamg_r)7w47ikkg&8g+^$4lmg3pgie#a2'
 
