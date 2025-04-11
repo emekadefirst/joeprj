@@ -99,3 +99,11 @@ def test_notification(request):
             'status': 'error',
             'message': str(e)
         }, status=500)
+    
+
+
+@api_view()
+def getCounts(request):
+    program = Program.objects.count()
+    dailycontent = DailyStudy.objects.count()
+    return Response({'program': program, 'dailycontent': dailycontent})
