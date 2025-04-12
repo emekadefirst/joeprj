@@ -1,7 +1,9 @@
 import os
 from .base import *
 from datetime import timedelta
+from dotenv import load_dotenv
 
+load_dotenv()
 
 ALLOWED_HOSTS = ['*']
 
@@ -20,26 +22,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": os.environ.get("DB_NAME"),
-#         "USER": os.environ.get("DB_USER"),
-#         "PASSWORD": os.environ.get("DB_PASSWORD"),
-#         "HOST": "localhost",
-#         "PORT": 5432,
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'production.db',
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
+        'OPTIONS': {'sslmode': 'require'},
     }
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5173",
+    'https://admin-hazel-xi.vercel.app',
 ]
 
 

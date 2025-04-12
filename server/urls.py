@@ -25,7 +25,7 @@ schema_view = get_schema_view(
 )
 
 from rest_framework.routers import DefaultRouter
-from audit.views import AuditLogViewSet
+from zaudit.views import AuditLogViewSet
 
 router = DefaultRouter()
 router.register(r'audit-logs', AuditLogViewSet)
