@@ -1,9 +1,10 @@
 import os
+from . import env
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False
+DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -81,3 +82,15 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join("media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+EMAIL_BACKEND = env.EMAIL_BACKEND
+EMAIL_HOST = env.EMAIL_HOST
+EMAIL_PORT = env.EMAIL_PORT
+EMAIL_USE_SSL = env.EMAIL_USE_SSL
+EMAIL_USE_TLS = env.EMAIL_USE_TLS
+EMAIL_HOST_USER = env.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = env.EMAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = env.EMAIL_HOST
+

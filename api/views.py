@@ -69,37 +69,6 @@ def register_device(request):
     return Response({"error": "Token required"}, status=400)
 
 
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from .utils import send_push_notification
-
-@api_view(['POST'])
-def test_notification(request):
-    try:
-        title = request.data.get('title', 'Test Notification')
-        body = request.data.get('body', 'This is a test message')
-        
-        result = send_push_notification(title, body)
-        
-        if result is None:
-            return Response({
-                'status': 'error',
-                'message': 'Firebase not initialized or no valid devices'
-            }, status=400)
-            
-        return Response({
-            'status': 'success',
-            'total_devices': result['total'],
-            'success_count': result['success'],
-            'results': result['results']
-        })
-        
-    except Exception as e:
-        return Response({
-            'status': 'error',
-            'message': str(e)
-        }, status=500)
-    
 
 
 @api_view()

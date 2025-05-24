@@ -1,6 +1,7 @@
 from .base import *
+from . import env
 
-SECRET_KEY = 'django-insecure-^h%1ius-)i(8jgpj4hamg_r)7w47ikkg&8g+^$4lmg3pgie#a2'
+SECRET_KEY = env.SECRET_KEY
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -25,7 +26,7 @@ DATABASES = {
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://localhost:5173",
-    "https://admin-hazel-xi.vercel.app", # Test frontend origin
+    "https://admin-hazel-xi.vercel.app", 
 ]
 
 

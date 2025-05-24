@@ -1,13 +1,11 @@
 import os
 from .base import *
 from datetime import timedelta
-from dotenv import load_dotenv
+from . import env
 
-load_dotenv()
+ALLOWED_HOSTS = ['admin.rccgdailymanuals.com']
 
-ALLOWED_HOSTS = ['*']
-
-SECRET_KEY = 'django-insecure-^h%1ius-)i(8jgpj4hamg_r)7w47ikkg&8g+^$4lmg3pgie#a2'
+SECRET_KEY = env.SECRET_KEY
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -25,17 +23,16 @@ MIDDLEWARE = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'OPTIONS': {'sslmode': 'require'},
+        'NAME': env.DATABASE_NAME,
+        'USER': env.DATABASE_USER,
+        'PASSWORD': env.DATABASE_PASSWORD,
+        'HOST': 'localhost'
     }
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5500",
     "http://localhost:5173",
+    "http://admin.rccgdailymanuals.com",
     'https://admin-hazel-xi.vercel.app',
 ]
 

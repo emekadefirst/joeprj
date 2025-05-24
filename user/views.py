@@ -9,7 +9,7 @@ from django.contrib.auth import login
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from django.conf import settings as django_settings
+from server.settings.base import DEFAULT_FROM_EMAIL
 from django.contrib.auth import password_validation
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -29,16 +29,15 @@ def send_otp_email(request, email):
     request.session["otp_created_at"] = otp_created_at_str
     request.session["user_email"] = email
 
-    # Optionally, send the email (commented out for now)
-    # mail = send_mail(
-    #     'Forgot Password OTP',
-    #     f'Your OTP to reset your password is {otp}. Please use this code to complete the process.',
-    #     django_settings.EMAIL_HOST_USER,
-    #     [email],
-    #     fail_silently=False
-    # )
-    # if not mail:
-    #     return otp  
+    mail = send_mail(
+        'Forgot Password OTP',
+        f'Your OTP to reset your password is {otp}. Please use this code to complete the process.',
+        DEFAULT_FROM_EMAIL,
+        [email],
+        fail_silently=False
+    )
+    if not mail:
+        return otp  
 
     return otp
 
